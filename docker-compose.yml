@@ -1,0 +1,19 @@
+---
+services:
+  wireguard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - SOCAT_PORTS=80,443
+      - SOCAT_DEST_IP=10.0.0.1
+    volumes:
+      - ./config/wg_confs:/config/wg_confs
+    restart: unless-stopped

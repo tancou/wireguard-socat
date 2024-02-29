@@ -1,0 +1,4 @@
+1. The app is deployed 
+Access it at {{ .Values.wireguard.address }}
+Forwarded to {{ .Values.socat.destIp }}
+Ports forwarded {{ include "wireguard-socat.socat-ports" . | quote }}
